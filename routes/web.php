@@ -19,13 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', [UserController::class, 'index']);
+Route::prefix('/')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::resource('users', UserController::class);
+    Route::resource('blog', BlogController::class);
+});
 
-Route::get('/blog', [BlogController::class, 'index']);
+// Route::get('/blog', [BlogController::class, 'index']);
 
-Route::get('/blog/create', [BlogController::class, 'create']);
+// Route::get('/blog/create', [BlogController::class, 'create']);
 
-Route::get('/blog/edit', [BlogController::class, 'edit']);
+// Route::get('/blog/edit', [BlogController::class, 'edit']);
 
 Route::middleware([
     'auth:sanctum',

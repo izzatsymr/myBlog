@@ -13,7 +13,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
+        $name = "IjatHaha";
+        return view(
+            'blog.index',
+            compact('name')
+        );
     }
 
     /**
@@ -46,7 +50,6 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         return view('blog.edit');
-        
     }
 
     /**
