@@ -62,17 +62,34 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
-        return view('blog.edit');
+        $blog = Blog::find($id);
+        // dd($blog); -> ini untuk debug
+        //process
+        return view('blog.edit', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+        $blogs = Blog::find($id);
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|string',
+                'description' => 'required|string',
+            ]
+        );
+
+        //update date
+        $blogs->update($validator->validate());
+
+        return redirect('/blog');
+
     }
 
     /**

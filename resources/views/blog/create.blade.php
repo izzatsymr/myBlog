@@ -1,33 +1,33 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            New Title
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="block w-full overflow-auto scrolling-touch">
-                <form action="{{ route('blog.store') }}" method="POST">
-                    @csrf
-                    <div class="mt-4">
-                        <label for="title" value="{{ __('Title') }}"></label>>
-                        <br>
-                        <input id="title" type="text" name="title" required/>
-                        <br>
-                        <label for="description" value="{{ __('Description') }}"></label>
-                        <br>
-                        <input id="description" type="text" name="description" required/>
-                    </div>
-
-                    <div class="flex items-center justify-end mt-4">
-
-                        <button class="ml-4">
-                            Submit
-                        </button>
-                    </div>
-                </form>
+    <form class="w-full max-w-sm" action="{{route('blog.store')}}" method="POST">
+        @csrf
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/3">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="title">
+                    Title
+                </label>
+            </div>
+            <div class="md:w-2/3">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" name="title" id="title" type="text">
             </div>
         </div>
-    </div>
+        <div class="md:flex md:items-center mb-6">
+            <div class="md:w-1/3">
+                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="description">
+                    Description
+                </label>
+            </div>
+            <div class="md:w-2/3">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" name="description" id="description" type="text">
+            </div>
+        </div>
+        <div class="md:flex md:items-center">
+            <div class="md:w-1/3"></div>
+            <div class="md:w-2/3">
+                <button id="btn-submit" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
 </x-app-layout>
