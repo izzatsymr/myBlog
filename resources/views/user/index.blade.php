@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="block w-full overflow-auto scrolling-touch">
+    <div class="block w-full overflow-auto scrolling-touch font-sans">
         <table class="w-full max-w-full mb-4 bg-transparent">
             <thead class="text-gray-700">
                 <tr class="px-4 py-3 text-left">

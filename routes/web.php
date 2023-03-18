@@ -21,14 +21,15 @@ Route::get('/', function () {
 
 Route::prefix('/')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('users', UserController::class);
-    Route::resource('blog', BlogController::class);
 });
 
-// Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])->name('users');
 
-// Route::get('/blog/create', [BlogController::class, 'create']);
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
-// Route::get('/blog/edit', [BlogController::class, 'edit']);
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+
+Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
 
 Route::middleware([
     'auth:sanctum',
